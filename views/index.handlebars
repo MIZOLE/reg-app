@@ -1,0 +1,40 @@
+<div class="row">
+
+    <div class="head">
+        <h1>Registration Numbers</h1>
+    </div>
+    <br>
+    <br>
+
+    <form action="/" method="POST">
+
+        <div class="number">
+            <span class="label">Registrations</span>
+            <input class="greeted people" type="text" name="registrations" value="" placeholder="enter the reg number">
+        </div>
+        <div class="">
+            {{#each getreg}}
+            <li class="regNumber">
+                {{this.all_registrations}}
+            </li>
+        </div>
+
+        <br>
+        <br>
+        <hr>
+        <div class="filter">
+            <strong>Filter by town</strong>
+        </div>
+        <hr>
+        <div class="flash">
+            {{reg}}
+        </div>
+        <br>
+        <br>
+        <hr>
+    </form>
+
+    <a href="/">
+        <button class="button" type="button" name="button">Add numbers</button>
+    </a>
+</div>

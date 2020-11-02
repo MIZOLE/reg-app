@@ -1,0 +1,101 @@
+ .box {
+  padding: 0.75em;
+  border-radius : 0.5em;
+  border : 1px solid #ddd;
+  height: auto;
+  margin-bottom: 1em;
+}
+
+.row {
+  margin: 2em;
+  color: orange;
+  font-weight: bold;
+  background-color: grey;
+  margin: 2em;
+  color: orange;
+  font-weight: bold;
+  /* background-color: rgb(147, 137, 190); */
+  text-align: center;
+  align-items: center;
+  font-size: medium;
+  
+}
+
+/* .count {
+  text-align-last: center;
+} */
+.head {
+  font-style: italic;
+  font: small-caps;
+  color: crimson;
+  font-weight: bold;
+  border-radius: 3ch, solid;
+  border: lime, solid;
+  size: 2pt;
+}
+
+.entry {
+  color: yellowgreen;
+  border: darkslategrey, solid;
+
+}
+
+.reg {
+  font-size: 1.5em;
+  color: beige;
+}
+
+.filter {
+  font-size: larger;
+  color: black;
+}
+
+.button {
+  font: larger;
+  color: pink;
+  border: black, solid;
+  font-size: larger;
+}
+
+.flash {
+
+  font-family: Arial, Helvetica, sans-serif;
+  color: beige;
+  border: black, solid;
+}
+
+.label {
+  font-style: initial;
+  font-size: 2em;
+}
+
+
+.container {
+  background-color: grey;
+  background-position: right bottom;
+  background-repeat: no-repeat;  
+  background-size: auto;
+
+  
+}
+
+.body {
+  background-color: grey;
+  background-image: url(../img/numbers.jpg);
+
+}
+
+.regNumber {
+
+	background-color: yellow;
+	border: 0.1em solid;
+	border-radius: 0.25em;
+	padding: 1em;
+	margin: 0.5em;
+	width: 7em;
+	text-align: center;
+	font-weight: bold;
+	float: left;
+
+}
+
