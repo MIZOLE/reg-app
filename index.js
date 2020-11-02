@@ -7,8 +7,15 @@ const regnumbers = require('./reg')
 const pg = require("pg");
 const Pool = pg.Pool;
 
+const connectionString = process.env.DATABASE_URL || 'postgresql://codex123:codex123@localhost:5432/numbers';
 
-const Reg = regnumbers()
+const pool = new Pool({
+  connectionString,
+  // ssl: false
+});
+
+
+const Reg = regnumbers(pool)
 
 
 
@@ -38,24 +45,35 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', async function (req, res) {
-        var getreg = await Reg.ALLregnumbers()
+        // var getreg = await Reg.ALLregnumbers()
         res.render('index', {
-            getreg
+            // getreg
         });
 
 })
 
 
-app.post('/', async function (req, res) {
+app.post('/regnames', async function (req, res) {
 
     const addmessage = req.body.registrations
-    console.log(addmessage);
-    
-
+    const addData = await Reg.addRegN(addmessage)
+    const plates = await Reg.ALLregnumbers()
     res.render('index', {
-        addmessage
+        addData,
+        getreg: plates
+
     })
 })
+
+app.get('/reset', async function (req, res){
+
+    await Reg.resetReg()
+    res.render('index', 
+
+    )
+})
+
+
 // app.post('/', async function (res, req) {
 //     let Number = req.body;
 //     let Cletter = Number.toUpperCase()

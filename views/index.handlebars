@@ -6,35 +6,61 @@
     <br>
     <br>
 
-    <form action="/" method="POST">
+    <form action="/regnames" method="POST">
 
         <div class="number">
             <span class="label">Registrations</span>
             <input class="greeted people" type="text" name="registrations" value="" placeholder="enter the reg number">
+            <button class="button" type="submit" name="button">Add Numbers</button>
         </div>
+
         <div class="">
             {{#each getreg}}
             <li class="regNumber">
                 {{this.all_registrations}}
             </li>
+            {{/each}}
         </div>
 
+        <div>
+
+        </div>
+
+        <br>
+        <br>
         <br>
         <br>
         <hr>
         <div class="filter">
             <strong>Filter by town</strong>
         </div>
-        <hr>
+
+        <div class="buttons">
+            <input class="radio" type="radio" name="places" value="Bellville">
+            <span class="label-body">Bellville</span>
+
+            <input class="radio" type="radio" name="places" value="Cape Town">
+            <span class="label-body">Cape Town</span>
+
+            <input class="radio" type="radio" name="places" value="Paarl">
+            <span class="label-body">Paarl</span>
+
+        </div>
+
+
+
         <div class="flash">
-            {{reg}}
+            {{!-- {{reg}} --}}
         </div>
         <br>
         <br>
         <hr>
     </form>
 
-    <a href="/">
-        <button class="button" type="button" name="button">Add numbers</button>
-    </a>
+    <form action="/reset" method="GET">
+        <button class="button" type="submit" name="restart">Reset values</button>
+
+
+    </form>
+
 </div>

@@ -23,13 +23,13 @@ module.exports = function regNumbers(pool) {
             let checkTable;
             if (id > 0) {
 
-                checkTable = await pool.query('select * from regnumbers  where all_registrations =$1', [regnumbers])
+                checkTable = await pool.query('select * from regnumbers where all_registrations =$1', [regnumbers])
             }
             
             
             if (checkTable.rowCount < 1) {
 
-                await pool.query('insert into regnumbers (all_registrations, town_id) values $1,$2', [regnumbers, id])
+                await pool.query('insert into regnumbers (all_registrations, town_id) values( $1, $2)', [regnumbers, id])
             }
 
         }
@@ -38,10 +38,10 @@ module.exports = function regNumbers(pool) {
     }
 
     async function ALLregnumbers() {
-        const getPlates = await pool.query('select * from regnumbers')
+        const getPlates = await pool.query('select * from regnumbers ')
         return getPlates.rows;
-        
     }
+
 
     // async function filterbytown(town_name) {
 
