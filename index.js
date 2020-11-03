@@ -58,11 +58,11 @@ app.post('/regnames', async function (req, res) {
     const addmessage = req.body.registrations
     const addData = await Reg.addRegN(addmessage)
     const plates = await Reg.ALLregnumbers()
-    const filtering = await Reg.filterbytown()
+    // const filtering = await Reg.filterbytown()
 
     res.render('index', {
         addData,
-        regNnumbers: filtering,
+        plates
         
 
     })
