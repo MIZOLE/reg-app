@@ -1,4 +1,4 @@
-drop table if exists regnumbers,towns;
+
 
 create table towns (
 	id serial not null primary key,

@@ -62,7 +62,7 @@ app.post('/regnames', async function (req, res) {
 
     res.render('index', {
         addData,
-        plates
+        regNumbers: plates
         
 
     })
