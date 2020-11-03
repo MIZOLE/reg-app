@@ -45,9 +45,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', async function (req, res) {
-        // var getreg = await Reg.ALLregnumbers()
+         var allReg = await Reg.ALLregnumbers()
         res.render('index', {
-            // getreg
+            regNnumbers: allReg
         });
 
 })
@@ -58,9 +58,12 @@ app.post('/regnames', async function (req, res) {
     const addmessage = req.body.registrations
     const addData = await Reg.addRegN(addmessage)
     const plates = await Reg.ALLregnumbers()
+    const filtering = await Reg.filterbytown()
+
     res.render('index', {
         addData,
-        getreg: plates
+        regNnumbers: filtering,
+        
 
     })
 })
@@ -74,36 +77,6 @@ app.get('/reset', async function (req, res){
 })
 
 
-// app.post('/', async function (res, req) {
-//     let Number = req.body;
-//     let Cletter = Number.toUpperCase()
-
-//         if (Cletter !== "") {
-//             console.log(Cletter)
-
-//             if (/C[AYJ] \d{3,6}$/.test(Cletter) || /C[AYJ] \d{3}-\d{3}$/.test(Cletter)) {
-
-//                 if (await Reg.checkthereg(Cletter) === 0) {
-//                     await Reg.addNewregnumbers(Cletter)
-//                     req.flash('Welldone!', 'WELLDONE!')
-//                 } else {
-//                     req.flash('error', 'registration already entered!')
-//                 }
-//             }
-//             else {
-//                 req.flash('error', 'enter a valid registration!')
-//             }
-//         }
-//         else {
-//             req.flash('error', 'please enter a registration!')
-//         }
-
-//         var allreg = await regnumbers.ALLtheregnumbers()
-//         res.render('index', {
-//             Reg: allreg,
-//         })
-
-// })
 
 let PORT = process.env.PORT || 4000;
 

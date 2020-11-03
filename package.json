@@ -1,10 +1,10 @@
 {
   "name": "registration_numbers_webapp",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +17,15 @@
     "pg": "^8.4.2",
     "pg-pool": "^3.2.2",
     "pool": "^0.4.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MIZOLE/reg-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MIZOLE/reg-app/issues"
+  },
+  "homepage": "https://github.com/MIZOLE/reg-app#readme",
+  "description": ""
 }
