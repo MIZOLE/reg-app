@@ -40,19 +40,19 @@ module.exports = function regNumbers(pool) {
     }
 
 
-    // async function filterbytown(town_name) {
+    async function filterbytown(town_name) {
 
-    //     if (town_name === 'show') {
-    //         const filter = await pool.query(`select * from regnumbers`)
-    //         return filter.rows
-    //     }
-    //     const Towns = town_name.substring(0, 2)
-    //     const regId = await pool.query('select id from towns where starts_with = $1', [Towns])
-    //     const id = regId.rows[0].id
-    //     const other = await pool.query(`select all_registrations from regnumbers where town_id = $1`, [id])
-    //     return other.rows
+        if (town_name === 'show') {
+            const filter = await pool.query(`select * from regnumbers`)
+            return filter.rows
+        }
+        const Towns = town_name.substring(0, 2)
+        const regId = await pool.query('select id from towns where starts_with = $1', [Towns])
+        const id = regId.rows[0].id
+        const other = await pool.query(`select all_registrations from regnumbers where town_id = $1`, [id])
+        return other.rows
 
-    // }
+    }
 
 
     return {
@@ -60,7 +60,7 @@ module.exports = function regNumbers(pool) {
         checkIfexist,
         addRegN,
         ALLregnumbers,
-        // filterbytown
+        filterbytown
     }
 
 }
