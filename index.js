@@ -10,8 +10,8 @@ const Pool = pg.Pool;
 const connectionString = process.env.DATABASE_URL || 'postgresql://codex123:codex123@localhost:5432/numbers';
 
 const pool = new Pool({
-  connectionString,
-  // ssl: false
+    connectionString,
+    // ssl: false
 });
 
 
@@ -45,33 +45,28 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', async function (req, res) {
-         var allReg = await Reg.ALLregnumbers()
-        res.render('index', {
-            regNnumbers: allReg
-        });
+    res.render('index', {
+        regNnumbers: await Reg.ALLregnumbers()
+    });
 
 })
-
 
 app.post('/regnames', async function (req, res) {
 
-    const addmessage = req.body.registrations
-    const addData = await Reg.addRegN(addmessage)
-    const plates = await Reg.ALLregnumbers()
+    const addmessage = req.body.registrations;
+     await Reg.addRegN(addmessage)
+
     // const filtering = await Reg.filterbytown()
 
     res.render('index', {
-        addData,
-        regNumbers: plates
-        
-
+        regNumbers: await Reg.ALLregnumbers(addmessage)       
     })
 })
 
-app.get('/reset', async function (req, res){
+app.get('/reset', async function (req, res) {
 
     await Reg.resetReg()
-    res.render('index', 
+    res.render('index',
 
     )
 })

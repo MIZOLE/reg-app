@@ -27,7 +27,7 @@ module.exports = function regNumbers(pool) {
             }
 
 
-            if (checkTable.rowCount < 1) {
+            if (checkTable.rowCount === 0) {
 
                 await pool.query('insert into regnumbers (all_registrations, town_id) values( $1, $2)', [regnumbers, id])
             }
