@@ -46,7 +46,7 @@ app.use(bodyParser.json())
 
 app.get('/', async function (req, res) {
     res.render('index', {
-        regNnumbers: await Reg.ALLregnumbers()
+        regNumbers: await Reg.ALLregnumbers()
     });
 
 })
