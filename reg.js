@@ -16,9 +16,9 @@ module.exports = function regNumbers(pool) {
         if (!regnumbers == "") {
 
             //splitting reg into towns and reg numbers 
-            const Towns = regnumbers.substring(0, 2)
-            const regId = await pool.query('select id from towns where starts_with = $1', [Towns])
-            const id = regId.rows[0].id
+            let Towns = regnumbers.substring(0, 2)
+            let regId = await pool.query('select id from towns where starts_with = $1', [Towns])
+            let id = regId.rows[0].id
 
             let checkTable;
             if (id > 0) {
@@ -42,7 +42,7 @@ module.exports = function regNumbers(pool) {
 
     async function filterbytown(town_name) {
 
-        if (town_name === 'show') {
+        if (town_name === 'All') {
             const filter = await pool.query(`select * from regnumbers`)
             return filter.rows
         }

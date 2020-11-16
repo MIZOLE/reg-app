@@ -9,61 +9,66 @@
 
         <div class="number">
             <span class="label">Registrations</span>
-            <input class="greeted people" type="text" name="registrations" value="" placeholder="enter the reg number">
+            <input class="greeted people" type="text" name="registration" value="" placeholder="enter the reg number">
             <button class="button" type="submit" name="button">Add Numbers</button>
         </div>
 
-        <div class="">
-            {{#each regNumbers}}
-            <li class="regNumber">
-                {{this.all_registrations}}
-            </li>
-            {{/each}}
+        
+        <div class="entry">
+            <h1> {{messages.info}}</h1>
         </div>
-        <div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <hr>
-        <div class="filter">
-            <strong>Filter by town</strong>
+        
+         <div class="">
+        {{#each regNumbers}}
+        <li class="regNumber">
+            {{this.all_registrations}}
+        </li>
+        {{/each}}
+    </div>
 
-            <form action="/regnames" method="POST">
-                <div class="buttons">
-                    <input class="radio" type="radio" name="places" value="Bellville">
-                    <span class="label-body">Bellville</span>
-
-                    <input class="radio" type="radio" name="places" value="Cape Town">
-                    <span class="label-body">Cape Town</span>
-
-                    <input class="radio" type="radio" name="places" value="Paarl">
-                    <span class="label-body">Paarl</span>
-
-                    <input class="radio" type="radio" name="places" value="All">
-                    <span class="label-body">All</span>
-
-
-                    <button class="button" type="button" name="show">Show Selected Towns</button>
-
-                </div>
-
-
-            </form>
-        </div>
-        <div class="flash">
-            {{!-- {{reg}} --}}
-        </div>
-        <br>
-        <br>
-        <hr>
     </form>
+
+   
+    <div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <div class="filter">
+        <strong>Filter by town</strong>
+
+        <form action="/regnames" method="GET">
+            <input class="radio" type="radio" class="places" name="places" value="CY">
+            <span class="label-body">Bellville</span>
+
+            <input class="radio" type="radio" class="places" name="places" value="CA">
+            <span class="label-body">Cape Town</span>
+
+            <input class="radio" type="radio" class="places" name="places" value="CJ">
+            <span class="label-body">Paarl</span>
+
+            <input class="radio" type="radio" class="places" name="places" value="All">
+            <span class="label-body">All</span>
+
+
+            <button class="button" type="submit" name="show">Show Selected Towns</button>
+
+        </form>
+
+
+
+    </div>
+
+    <div class="flash">
+        {{!-- {{reg}} --}}
+    </div>
+    <br>
+    <br>
+    <hr>
 
     <form action="/reset" method="GET">
         <button class="button" type="submit" name="restart">Reset values</button>
-
     </form>
-
-
 </div>

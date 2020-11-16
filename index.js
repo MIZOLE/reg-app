@@ -45,23 +45,48 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', async function (req, res) {
+
+
     res.render('index', {
         regNumbers: await Reg.ALLregnumbers()
     });
-
 })
 
 app.post('/regnames', async function (req, res) {
+    let error = ""
+    let addmessage = req.body.registration;
 
-    const addmessage = req.body.registrations;
-     await Reg.addRegN(addmessage)
+    await Reg.addRegN(addmessage)
 
-    // const filtering = await Reg.filterbytown()
+    let { registration, places } = req.body.registration;
 
-    res.render('index', {
-        regNumbers: await Reg.ALLregnumbers(addmessage)       
-    })
+    if (registration === "") {
+        error = "Please enter a registration number"
+    }
+
+    else if (!places) {
+        error = 'Please select a town name'
+    }
+
+    else {
+        res.render('index', {
+            Reg: addmessage
+        })
+        return;
+    }
+
+    if (error) {
+        req.flash('info', error);
+        res.render('index');
+    }
+    else {
+        res.render('index', {
+            regNumbers: await Reg.ALLregnumbers(addmessage)
+        })
+    }
+
 })
+
 
 app.get('/reset', async function (req, res) {
 
@@ -72,6 +97,15 @@ app.get('/reset', async function (req, res) {
 })
 
 
+app.get('/regnames', async function (req, res) {
+    const buttons = req.query.places
+
+    res.render('index', {
+        regNumbers: await Reg.filterbytown(buttons)
+    }
+
+    )
+})
 
 let PORT = process.env.PORT || 4000;
 
