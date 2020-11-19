@@ -53,32 +53,36 @@ app.get('/', async function (req, res) {
 })
 
 app.post('/regnames', async function (req, res) {
+
     let error = ""
+    let successfully = ""
+    let reg = req.body.name
+    
+
     let addmessage = req.body.registration;
 
-    await Reg.addRegN(addmessage)
-
-    let { registration, places } = req.body.registration;
-
-    if (registration === "") {
+    if (addmessage === '') {
         error = "Please enter a registration number"
     }
 
-    else if (!places) {
-        error = 'Please select a town name'
+    else if (isNaN(addmessage) === false) {
+        error = 'Please enter appropriate registration '
+    }
+
+    else if (addmessage) {
+        successfully = "Reg stored successfully"
     }
 
     else {
-        res.render('index', {
-            Reg: addmessage
-        })
-        return;
+        await Reg.addRegN(addmessage)
     }
 
     if (error) {
         req.flash('info', error);
         res.render('index');
     }
+
+
     else {
         res.render('index', {
             regNumbers: await Reg.ALLregnumbers(addmessage)
@@ -88,23 +92,28 @@ app.post('/regnames', async function (req, res) {
 })
 
 
+
 app.get('/reset', async function (req, res) {
 
     await Reg.resetReg()
     res.render('index',
 
     )
-})
-
+});
 
 app.get('/regnames', async function (req, res) {
-    const buttons = req.query.places
+    let buttons = req.query.places
+    console.log(buttons)
 
-    res.render('index', {
-        regNumbers: await Reg.filterbytown(buttons)
+    if (!buttons) {
+        req.flash('info', 'Please select a town name');
+    } else {
+        var regNumbers = await Reg.filterbytown(buttons)
     }
 
-    )
+    res.render('index', {
+        regNumbers
+    })
 })
 
 let PORT = process.env.PORT || 4000;

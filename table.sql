@@ -1,5 +1,3 @@
-
-
 create table towns (
 	id serial not null primary key,
     town_name  text not null,

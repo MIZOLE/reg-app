@@ -10,7 +10,7 @@
   margin: 2em;
   color: orange;
   font-weight: bold;
-  background-color: grey;
+  background-color: white;
   margin: 2em;
   color: orange;
   font-weight: bold;
@@ -19,6 +19,10 @@
   align-items: center;
   font-size: medium;
   
+}
+
+.number {
+  color: red;
 }
 
 /* .count {
@@ -32,6 +36,10 @@
   border-radius: 3ch, solid;
   border: lime, solid;
   size: 2pt;
+}
+
+li {
+list-style-type: none;
 }
 
 .entry {
@@ -71,18 +79,17 @@
 
 
 .container {
-  background-color: grey;
+  background-color: yellowgreen;
   background-position: right bottom;
   background-repeat: no-repeat;  
   background-size: auto;
+  margin-bottom: 10em;
 
   
 }
 
-.body {
-  background-color: grey;
-  background-image: url(../img/numbers.jpg);
-
+body {
+  background-image: url(../img/numbers.jpg)
 }
 
 .regNumber {
@@ -96,6 +103,19 @@
 	text-align: center;
 	font-weight: bold;
 	float: left;
+
+}
+
+.message {
+
+  background-color: yellow;
+	border: 0.1em solid;
+	border-radius: 0.25em;
+	padding: 1em;
+	margin: 0.5em;
+	width: 7em;
+	text-align: center;
+	font-weight: bold;
 
 }
 
