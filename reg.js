@@ -8,8 +8,8 @@ module.exports = function regNumbers(pool) {
 
     async function checkIfexist(regnumbers) {
 
-        const check = await pool.query('select * from regnumbers where all_registration = $1', [regnumbers])
-        return check.rowCount
+        const check = await pool.query('select * from regnumbers where all_registrations = $1', [regnumbers])
+        return check.rowCount ==1;
     }
 
     async function addRegN(regnumbers) {
@@ -25,7 +25,6 @@ module.exports = function regNumbers(pool) {
 
                 checkTable = await pool.query('select * from regnumbers where all_registrations =$1', [regnumbers])
             }
-
 
             if (checkTable.rowCount === 0) {
 

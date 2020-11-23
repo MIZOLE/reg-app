@@ -31,7 +31,7 @@
 .head {
   font-style: italic;
   font: small-caps;
-  color: crimson;
+  color: red;
   font-weight: bold;
   border-radius: 3ch, solid;
   border: lime, solid;
@@ -42,9 +42,10 @@ li {
 list-style-type: none;
 }
 
-.entry {
+.error   {
   color: red;
   border: darkslategrey, solid;
+  font-size: 0.5em;
 
 }
 
@@ -66,7 +67,6 @@ list-style-type: none;
 }
 
 .flash {
-
   font-family: Arial, Helvetica, sans-serif;
   color: beige;
   border: black, solid;
@@ -77,15 +77,20 @@ list-style-type: none;
   font-size: 2em;
 }
 
+.success {
+  color: green;
+}
+
+.exist {
+  color: red;
+}
 
 .container {
   background-color: yellowgreen;
   background-position: right bottom;
   background-repeat: no-repeat;  
   background-size: auto;
-  margin-bottom: 10em;
-
-  
+  margin-bottom: 10em; 
 }
 
 body {

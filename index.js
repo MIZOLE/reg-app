@@ -29,7 +29,8 @@ app.use(session({
 }));
 
 app.get('/addFlash', function (req, res) {
-    req.flash('info', 'Flash Message Added');
+    req.flash('success', 'Flash Message Added');
+
     res.redirect('/');
 });
 
@@ -55,25 +56,28 @@ app.get('/', async function (req, res) {
 app.post('/regnames', async function (req, res) {
 
     let error = ""
-    let successfully = ""
     let reg = req.body.name
-    
-
+    var stored = await Reg.checkIfexist(reg);
     let addmessage = req.body.registration;
+    let similar = await Reg.checkIfexist(reg);
+
+
+    if (similar === 0) {
+        await Reg.checkIfexist(reg);
+        req.flash('exist', 'Reg already exist');
+        console.log(similar)
+
+    }
 
     if (addmessage === '') {
         error = "Please enter a registration number"
     }
-
-    else if (isNaN(addmessage) === false) {
+    if (isNaN(addmessage) === false) {
         error = 'Please enter appropriate registration '
     }
 
-    else if (addmessage) {
-        successfully = "Reg stored successfully"
-    }
-
     else {
+        req.flash('success', 'Registration successfully registered');
         await Reg.addRegN(addmessage)
     }
 
@@ -81,7 +85,6 @@ app.post('/regnames', async function (req, res) {
         req.flash('info', error);
         res.render('index');
     }
-
 
     else {
         res.render('index', {
@@ -91,19 +94,18 @@ app.post('/regnames', async function (req, res) {
 
 })
 
-
-
 app.get('/reset', async function (req, res) {
 
     await Reg.resetReg()
+    req.flash('success', 'Reg numbers successfully reseted from database');
     res.render('index',
-
     )
 });
 
 app.get('/regnames', async function (req, res) {
     let buttons = req.query.places
     console.log(buttons)
+    let success = ""
 
     if (!buttons) {
         req.flash('info', 'Please select a town name');
