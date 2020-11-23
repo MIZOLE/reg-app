@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const regnumbers = require('./reg')
 const pg = require("pg");
 const Pool = pg.Pool;
+const _ = require('lodash');
 
 const connectionString = process.env.DATABASE_URL || 'postgresql://codex123:codex123@localhost:5432/numbers';
 
@@ -56,29 +57,24 @@ app.get('/', async function (req, res) {
 app.post('/regnames', async function (req, res) {
 
     let error = ""
-    let reg = req.body.name
-    var stored = await Reg.checkIfexist(reg);
-    let addmessage = req.body.registration;
-    let similar = await Reg.checkIfexist(reg);
+    // var stored = await Reg.checkIfexist(reg);
+    let addmessage =_.upperCase(req.body.registration); 
+    let similar = await Reg.checkIfexist(addmessage);
 
-
-    if (similar === 0) {
-        await Reg.checkIfexist(reg);
-        req.flash('exist', 'Reg already exist');
-        console.log(similar)
-
-    }
-
+    console.log(similar)
+    
     if (addmessage === '') {
         error = "Please enter a registration number"
     }
-    if (isNaN(addmessage) === false) {
-        error = 'Please enter appropriate registration '
+
+    else if (similar === true) {
+        await Reg.addRegN(addmessage)
+        req.flash('success', 'Registration successfully registered');
     }
 
-    else {
-        req.flash('success', 'Registration successfully registered');
-        await Reg.addRegN(addmessage)
+    else if (similar === false) {
+        req.flash('exist', 'Reg already exist');
+        // console.log(similar)
     }
 
     if (error) {

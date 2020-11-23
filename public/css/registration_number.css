@@ -49,6 +49,11 @@ list-style-type: none;
 
 }
 
+.fill {
+  color:  red;
+  font-size: larger;
+}
+
 .reg {
   font-size: 1.5em;
   color: beige;

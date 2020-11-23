@@ -44,7 +44,10 @@
     </div>
 
     <div class="filter">
-        <strong>Filter by town</strong>
+        <div class="fill">
+            <strong>Filter by town</strong>
+        </div>
+
 
         <form action="/regnames" method="GET">
             <input class="radio" type="radio" class="places" name="places" value="CY">
@@ -84,3 +87,11 @@
         <br>
     </div>
 </div>
+
+<script>
+    setTimeout(function () {
+        document.querySelector(".error").innerHTML = "";
+        document.querySelector(".success").innerHTML = "";
+        document.querySelector(".exist").innerHTML = ""
+    }, 2000)
+</script>
