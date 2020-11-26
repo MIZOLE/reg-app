@@ -1,0 +1,14 @@
+language: node_js
+
+env:
+  - DATABASE_URL=postgresql://postgres@localhost:5432/numbers
+
+node_js:  
+  - 12
+
+before_script:
+  - psql -c 'create database numbers;' -U postgres
+  - psql -U postgres -d numbers -a -f table.sql
+
+services:
+  - postgresql
