@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/MIZOLE/reg-app.svg?branch=main)](https://travis-ci.org/MIZOLE/reg-app)
