@@ -22,7 +22,7 @@
 }
 
 .number {
-  color: red;
+  color:yellowgreen;
 }
 
 /* .count {
@@ -31,7 +31,7 @@
 .head {
   font-style: italic;
   font: small-caps;
-  color: red;
+  color: yellowgreen;
   font-weight: bold;
   border-radius: 3ch, solid;
   border: lime, solid;
@@ -50,7 +50,7 @@ list-style-type: none;
 }
 
 .fill {
-  color:  red;
+  color: yellowgreen;
   font-size: larger;
 }
 
@@ -99,7 +99,8 @@ list-style-type: none;
 }
 
 body {
-  background-image: url(../img/numbers.jpg)
+  background-image: url(../img/number.jpg)
+  
 }
 
 .regNumber {

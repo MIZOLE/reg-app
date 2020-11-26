@@ -58,19 +58,29 @@ app.post('/regnames', async function (req, res) {
 
     let error = ""
     // var stored = await Reg.checkIfexist(reg);
-    let addmessage =_.upperCase(req.body.registration); 
+    let addmessage = _.upperCase(req.body.registration);
     let similar = await Reg.checkIfexist(addmessage);
-
+    let select = await Reg.ALLregnumbers()
     console.log(similar)
-    
+
     if (addmessage === '') {
         error = "Please enter a registration number"
     }
+    // else if (select === "") {
+    //     await Reg.addRegN(addmessage)
+    //     req.flash('info', 'Eenter appropriate reg');
+    // }
+
+    else if (isNaN(addmessage) === false) {
+        error = 'Please enter appropriate reg number '
+    }
+
 
     else if (similar === true) {
         await Reg.addRegN(addmessage)
         req.flash('success', 'Registration successfully registered');
     }
+
 
     else if (similar === false) {
         req.flash('exist', 'Reg already exist');

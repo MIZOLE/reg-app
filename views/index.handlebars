@@ -16,11 +16,9 @@
 
         <div class="error">
 
-            {{!-- {{#if messages.info}} --}}
             <span>
                 <h1>{{messages.info}}</h1>
             </span>
-            {{!-- {{else if}} --}}
             <span>
                 <h1 class="success">{{messages.success}}</h1>
             </span>
@@ -29,7 +27,6 @@
                 <h1 class="exist">{{messages.exist}}</h1>
             </span>
 
-            {{!-- {{/if}} --}}
         </div>
     </form>
     <div>
@@ -50,20 +47,19 @@
 
 
         <form action="/regnames" method="GET">
-            <input class="radio" type="radio" class="places" name="places" value="CY">
+            <input class="radio" type="radio" name="places" value="3">
             <span class="label-body">Bellville</span>
 
-            <input class="radio" type="radio" class="places" name="places" value="CA">
+            <input class="radio" type="radio" name="places" value="1">
             <span class="label-body">Cape Town</span>
 
-            <input class="radio" type="radio" class="places" name="places" value="CJ">
+            <input class="radio" type="radio" name="places" value="2">
             <span class="label-body">Paarl</span>
 
-            <input class="radio" type="radio" class="places" name="places" value="All">
+            <input class="radio" type="radio" name="places" value="All">
             <span class="label-body">All</span>
 
             <button class="button" type="submit" name="show">Show Selected Towns</button>
-
 
         </form>
         <br>
