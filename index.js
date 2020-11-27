@@ -68,9 +68,10 @@ app.post('/regnames', async function (req, res) {
         error = 'Please enter appropriate reg number '
     }
 
+
     else if (addmessage.length != 10) {
         // alert("length must be exactly 6 characters")
-        req.flash('info', 'length must be less than 8 characters');
+        req.flash('info', 'Reg number must be less than 8 characters');
     }
 
     else if (similar === true) {
@@ -81,6 +82,18 @@ app.post('/regnames', async function (req, res) {
     else if (similar === false) {
         req.flash('exist', 'Reg already exist');
     }
+
+    // if (addmessage !=  "1" ) {
+    //         error = 'Please enter reg '
+    //     }
+    
+    //    else if (addmessage !=  "2") {
+    //         error = 'Please enter reg '
+    //     }
+    
+    //     else if (addmessage !=  "3") {
+    //         error = 'Please enter reg '
+    //     }
 
     if (error) {
         req.flash('info', error);

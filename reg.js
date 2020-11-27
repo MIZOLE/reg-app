@@ -9,21 +9,36 @@ module.exports = function regNumbers(pool) {
     async function checkIfexist(regnumbers) {
 
         const check = await pool.query('select all_registrations from regnumbers where all_registrations = $1', [regnumbers])
-        console.log(check )
-        return check.rowCount ===0 ;
+        return check.rowCount === 0;
     }
+
+    async function startswith(regnumbers) {
+
+        if (regnumbers !== "1" || "2" || "3") {
+            //to check the string
+            //to select the appropriate town string
+            let AllTowns = await pool.query('select starts_with from towns where starts_with = $1', [regnumbers])
+            //add town string that is appropriate
+            return AllTowns.rows;
+        }
+    }
+
+
 
     async function addRegN(regnumbers) {
         if (!regnumbers == "") {
 
             //splitting reg into towns and reg numbers 
             let Towns = regnumbers.substring(0, 2)
+            let func = startswith(Towns)
+            console.log(func);
+
             let regId = await pool.query('select id from towns where starts_with = $1', [Towns])
             let id = regId.rows[0].id
 
             let checkTable;
             if (id > 0) {
-                
+
 
                 checkTable = await pool.query('select * from regnumbers where all_registrations =$1', [regnumbers])
             }
@@ -50,7 +65,7 @@ module.exports = function regNumbers(pool) {
             let other = await pool.query(`select all_registrations from regnumbers where town_id = $1`, [town_name])
             return other.rows
         }
-      
+
     }
 
     return {
@@ -58,7 +73,8 @@ module.exports = function regNumbers(pool) {
         checkIfexist,
         addRegN,
         ALLregnumbers,
-        filterbytown
+        filterbytown,
+        startswith
     }
 
 }
