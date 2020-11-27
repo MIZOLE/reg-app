@@ -14,5 +14,3 @@ create table regnumbers (
 insert into towns (town_name, starts_with) values ('Cape Town', 'CA');
 insert into towns (town_name, starts_with) values ('Paarl', 'CJ');
 insert into towns (town_name, starts_with) values ('Belville', 'CY');
-
-

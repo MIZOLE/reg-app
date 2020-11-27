@@ -109,4 +109,16 @@ it("should be able to filter for Belville ", async function () {
     assert.deepEqual([{ all_registrations: 'CY 636 845' }], await reg.filterbytown('3'));
 });
 
+it("should be able to filter for All towns ", async function () {
+    var reg = numbers(pool)
+
+    await reg.addRegN("CA 666 845")
+    await reg.addRegN("CY 636 845")
+    await reg.addRegN("CJ 656 845")
+
+    assert.deepEqual([{ all_registrations: "CA 666 845"}, { all_registrations: "CY 636 845"}, { all_registrations: "CJ 656 845"}], await reg.filterbytown('All'));
+});
+
+
+
 });

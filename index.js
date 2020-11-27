@@ -42,7 +42,6 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
-
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -57,19 +56,13 @@ app.get('/', async function (req, res) {
 app.post('/regnames', async function (req, res) {
 
     let error = ""
-    // var stored = await Reg.checkIfexist(reg);
     let addmessage = _.upperCase(req.body.registration);
     let similar = await Reg.checkIfexist(addmessage);
     let select = await Reg.ALLregnumbers()
-    console.log(similar)
-
+    
     if (addmessage === '') {
         error = "Please enter a registration number"
     }
-    // else if (select === "") {
-    //     await Reg.addRegN(addmessage)
-    //     req.flash('info', 'Eenter appropriate reg');
-    // }
 
     else if (isNaN(addmessage) === false) {
         error = 'Please enter appropriate reg number '
@@ -85,10 +78,8 @@ app.post('/regnames', async function (req, res) {
         req.flash('success', 'Registration successfully registered');
     }
 
-
     else if (similar === false) {
         req.flash('exist', 'Reg already exist');
-        // console.log(similar)
     }
 
     if (error) {
@@ -101,7 +92,6 @@ app.post('/regnames', async function (req, res) {
             regNumbers: await Reg.ALLregnumbers(addmessage)
         })
     }
-
 })
 
 app.get('/reset', async function (req, res) {
@@ -114,8 +104,6 @@ app.get('/reset', async function (req, res) {
 
 app.get('/regnames', async function (req, res) {
     let buttons = req.query.places
-    console.log(buttons)
-    let success = ""
 
     if (!buttons) {
         req.flash('info', 'Please select a town name');
