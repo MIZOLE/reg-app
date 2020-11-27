@@ -31,7 +31,7 @@ module.exports = function regNumbers(pool) {
             //splitting reg into towns and reg numbers 
             let Towns = regnumbers.substring(0, 2)
             let func = startswith(Towns)
-            console.log(func);
+            // console.log(func);
 
             let regId = await pool.query('select id from towns where starts_with = $1', [Towns])
             let id = regId.rows[0].id
