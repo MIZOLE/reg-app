@@ -59,7 +59,7 @@ app.post('/regnames', async function (req, res) {
     let addmessage = _.upperCase(req.body.registration);
     let similar = await Reg.checkIfexist(addmessage);
     let select = await Reg.ALLregnumbers()
-    
+
     if (addmessage === '') {
         error = "Please enter a registration number"
     }

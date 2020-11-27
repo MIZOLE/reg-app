@@ -12,16 +12,16 @@ module.exports = function regNumbers(pool) {
         return check.rowCount === 0;
     }
 
-    async function startswith(regnumbers) {
+    // async function startswith(regnumbers) {
 
-        if (regnumbers !== "1" || "2" || "3") {
-            //to check the string
-            //to select the appropriate town string
-            let AllTowns = await pool.query('select starts_with from towns where starts_with = $1', [regnumbers])
-            //add town string that is appropriate
-            return AllTowns.rows;
-        }
-    }
+    //     if (regnumbers !== "1" || "2" || "3") {
+    //         //to check the string
+    //         //to select the appropriate town string
+    //         let AllTowns = await pool.query('select starts_with from towns where starts_with = $1', [regnumbers])
+    //         //add town string that is appropriate
+    //         return AllTowns.rows;
+    //     }
+    // }
 
 
 
@@ -29,17 +29,17 @@ module.exports = function regNumbers(pool) {
         if (!regnumbers == "") {
 
             //splitting reg into towns and reg numbers 
+
             let Towns = regnumbers.substring(0, 2)
-            let func = startswith(Towns)
             // console.log(func);
+            // let func = startswith(Towns)
 
             let regId = await pool.query('select id from towns where starts_with = $1', [Towns])
+            
             let id = regId.rows[0].id
-
             let checkTable;
             if (id > 0) {
-
-
+                
                 checkTable = await pool.query('select * from regnumbers where all_registrations =$1', [regnumbers])
             }
 
@@ -74,7 +74,6 @@ module.exports = function regNumbers(pool) {
         addRegN,
         ALLregnumbers,
         filterbytown,
-        startswith
     }
 
 }
