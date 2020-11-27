@@ -75,6 +75,10 @@ app.post('/regnames', async function (req, res) {
         error = 'Please enter appropriate reg number '
     }
 
+    else if (addmessage.length != 10) {
+        // alert("length must be exactly 6 characters")
+        req.flash('info', 'length must be less than 8 characters');
+    }
 
     else if (similar === true) {
         await Reg.addRegN(addmessage)
