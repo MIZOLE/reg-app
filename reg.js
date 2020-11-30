@@ -12,19 +12,6 @@ module.exports = function regNumbers(pool) {
         return check.rowCount === 0;
     }
 
-    // async function startswith(regnumbers) {
-
-    //     if (regnumbers !== "1" || "2" || "3") {
-    //         //to check the string
-    //         //to select the appropriate town string
-    //         let AllTowns = await pool.query('select starts_with from towns where starts_with = $1', [regnumbers])
-    //         //add town string that is appropriate
-    //         return AllTowns.rows;
-    //     }
-    // }
-
-
-
     async function addRegN(regnumbers) {
         if (!regnumbers == "") {
 

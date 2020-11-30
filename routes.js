@@ -15,8 +15,10 @@ module.exports = function routes(Reg) {
         let error = ""
         let addmessage = _.upperCase(req.body.registration);
         let similar = await Reg.checkIfexist(addmessage);
+        
 
-        if (addmessage === '') {
+       
+      if (addmessage === '') {
             req.flash('info', 'Please enter a registration number');
 
         }
@@ -25,6 +27,10 @@ module.exports = function routes(Reg) {
             error = ' '
             req.flash('info', 'Please enter appropriate reg number');
 
+        }
+
+        else if (!/C[AYJ]/.test(addmessage) ) {
+            req.flash('info', 'Registration is not recognised');
         }
 
         else if (addmessage.length != 10) {
@@ -39,10 +45,6 @@ module.exports = function routes(Reg) {
 
         else if (similar === false) {
             req.flash('exist', 'Reg already exist');
-        }
-
-        else if (/C[AYJ] \d{4,6}$/.test(addmessage) || /C[AYJ] \d+\s|-\d+$/.test(addmessage)) {
-            req.flash('error', 'Registration is not recognised');
         }
 
         if (error) {
