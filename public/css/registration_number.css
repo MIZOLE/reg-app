@@ -48,6 +48,10 @@ list-style-type: none;
 
 }
 
+.examples {
+  color: red;
+}
+
 .fill {
   color: yellowgreen;
   font-size: larger;
