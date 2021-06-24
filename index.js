@@ -8,6 +8,7 @@ const regRoutes = require('./routes')
 const pg = require("pg");
 const Pool = pg.Pool;
 
+//connecting the app with the database.
 const connectionString = process.env.DATABASE_URL || 'postgresql://codex123:codex123@localhost:5432/numbers';
 
 const pool = new Pool({
